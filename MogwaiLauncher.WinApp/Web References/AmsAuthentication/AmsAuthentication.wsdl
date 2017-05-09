@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.turbine.com/SE/AMS" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.turbine.com/SE/AMS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;b&gt;This Web Service implements the functionality of perform AMS authentication.&lt;/b&gt;</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.turbine.com/SE/AMS">
+      <s:element name="AuthenticateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="secret" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="realm" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="additionalData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthenticateUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Authenticate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="credential" type="tns:Credential" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Credential">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Realm" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdditionalData" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Secret" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AuthenticateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthenticateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RefreshTicket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RefreshTicketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RefreshTicketResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateTicket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateTicketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidateTicketResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HasTicketExpired">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HasTicketExpiredResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HasTicketExpiredResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AuthenticateUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthenticateUser" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateSoapIn">
+    <wsdl:part name="parameters" element="tns:Authenticate" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateResponse" />
+  </wsdl:message>
+  <wsdl:message name="RefreshTicketSoapIn">
+    <wsdl:part name="parameters" element="tns:RefreshTicket" />
+  </wsdl:message>
+  <wsdl:message name="RefreshTicketSoapOut">
+    <wsdl:part name="parameters" element="tns:RefreshTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateTicketSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateTicket" />
+  </wsdl:message>
+  <wsdl:message name="ValidateTicketSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="HasTicketExpiredSoapIn">
+    <wsdl:part name="parameters" element="tns:HasTicketExpired" />
+  </wsdl:message>
+  <wsdl:message name="HasTicketExpiredSoapOut">
+    <wsdl:part name="parameters" element="tns:HasTicketExpiredResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="secret" type="s:string" />
+    <wsdl:part name="realm" type="s:string" />
+    <wsdl:part name="additionalData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="RefreshTicketHttpGetIn">
+    <wsdl:part name="ticket" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RefreshTicketHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateTicketHttpGetIn">
+    <wsdl:part name="ticket" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateTicketHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="HasTicketExpiredHttpGetIn">
+    <wsdl:part name="ticket" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="HasTicketExpiredHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="secret" type="s:string" />
+    <wsdl:part name="realm" type="s:string" />
+    <wsdl:part name="additionalData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="RefreshTicketHttpPostIn">
+    <wsdl:part name="ticket" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RefreshTicketHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateTicketHttpPostIn">
+    <wsdl:part name="ticket" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateTicketHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="HasTicketExpiredHttpPostIn">
+    <wsdl:part name="ticket" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="HasTicketExpiredHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="AmsAuthenticationSoap">
+    <wsdl:operation name="AuthenticateUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method authenticates using the specified information.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;userName&lt;/b&gt; - &lt;i&gt;The name of the user.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;secret&lt;/b&gt; - &lt;i&gt;The secret for the user.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;realm&lt;/b&gt; - &lt;i&gt;The realm in which these credentials are valid.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;additionalData&lt;/b&gt; - &lt;i&gt;Additional provider specific information.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns the ticket to be used in subsequent calls requiring authorization.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:AuthenticateUserSoapIn" />
+      <wsdl:output message="tns:AuthenticateUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Authenticate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method authenticates using the specified information.&lt;/p&gt;&lt;p&gt;Credential &lt;b&gt;credential&lt;/b&gt; - &lt;i&gt;The credential to authenticate.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns the ticket to be used in subsequent calls requiring authorization.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:AuthenticateSoapIn" />
+      <wsdl:output message="tns:AuthenticateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RefreshTicket">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method refreshes the date/time on the specified ticket.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The ticket to refresh.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns the newly refreshed ticket.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:RefreshTicketSoapIn" />
+      <wsdl:output message="tns:RefreshTicketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateTicket">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method validates the specified ticket.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The ticket to validate.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns true if the ticket is valid, false if it is not.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:ValidateTicketSoapIn" />
+      <wsdl:output message="tns:ValidateTicketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HasTicketExpired">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method determines if the specified ticket has expired.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The ticket to check.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns true if the ticket is expired, false if it is not.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:HasTicketExpiredSoapIn" />
+      <wsdl:output message="tns:HasTicketExpiredSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AmsAuthenticationHttpGet">
+    <wsdl:operation name="AuthenticateUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method authenticates using the specified information.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;userName&lt;/b&gt; - &lt;i&gt;The name of the user.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;secret&lt;/b&gt; - &lt;i&gt;The secret for the user.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;realm&lt;/b&gt; - &lt;i&gt;The realm in which these credentials are valid.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;additionalData&lt;/b&gt; - &lt;i&gt;Additional provider specific information.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns the ticket to be used in subsequent calls requiring authorization.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:AuthenticateUserHttpGetIn" />
+      <wsdl:output message="tns:AuthenticateUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RefreshTicket">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method refreshes the date/time on the specified ticket.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The ticket to refresh.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns the newly refreshed ticket.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:RefreshTicketHttpGetIn" />
+      <wsdl:output message="tns:RefreshTicketHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateTicket">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method validates the specified ticket.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The ticket to validate.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns true if the ticket is valid, false if it is not.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:ValidateTicketHttpGetIn" />
+      <wsdl:output message="tns:ValidateTicketHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HasTicketExpired">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method determines if the specified ticket has expired.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The ticket to check.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns true if the ticket is expired, false if it is not.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:HasTicketExpiredHttpGetIn" />
+      <wsdl:output message="tns:HasTicketExpiredHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AmsAuthenticationHttpPost">
+    <wsdl:operation name="AuthenticateUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method authenticates using the specified information.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;userName&lt;/b&gt; - &lt;i&gt;The name of the user.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;secret&lt;/b&gt; - &lt;i&gt;The secret for the user.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;realm&lt;/b&gt; - &lt;i&gt;The realm in which these credentials are valid.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;additionalData&lt;/b&gt; - &lt;i&gt;Additional provider specific information.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns the ticket to be used in subsequent calls requiring authorization.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:AuthenticateUserHttpPostIn" />
+      <wsdl:output message="tns:AuthenticateUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RefreshTicket">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method refreshes the date/time on the specified ticket.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The ticket to refresh.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns the newly refreshed ticket.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:RefreshTicketHttpPostIn" />
+      <wsdl:output message="tns:RefreshTicketHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateTicket">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method validates the specified ticket.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The ticket to validate.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns true if the ticket is valid, false if it is not.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:ValidateTicketHttpPostIn" />
+      <wsdl:output message="tns:ValidateTicketHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HasTicketExpired">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method determines if the specified ticket has expired.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The ticket to check.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns true if the ticket is expired, false if it is not.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:HasTicketExpiredHttpPostIn" />
+      <wsdl:output message="tns:HasTicketExpiredHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AmsAuthenticationSoap" type="tns:AmsAuthenticationSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AuthenticateUser">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/AuthenticateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Authenticate">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/Authenticate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefreshTicket">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/RefreshTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateTicket">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/ValidateTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasTicketExpired">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/HasTicketExpired" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AmsAuthenticationSoap12" type="tns:AmsAuthenticationSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AuthenticateUser">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/AuthenticateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Authenticate">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/Authenticate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefreshTicket">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/RefreshTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateTicket">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/ValidateTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasTicketExpired">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/HasTicketExpired" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AmsAuthenticationHttpGet" type="tns:AmsAuthenticationHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AuthenticateUser">
+      <http:operation location="/AuthenticateUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefreshTicket">
+      <http:operation location="/RefreshTicket" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateTicket">
+      <http:operation location="/ValidateTicket" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasTicketExpired">
+      <http:operation location="/HasTicketExpired" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AmsAuthenticationHttpPost" type="tns:AmsAuthenticationHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AuthenticateUser">
+      <http:operation location="/AuthenticateUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefreshTicket">
+      <http:operation location="/RefreshTicket" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateTicket">
+      <http:operation location="/ValidateTicket" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasTicketExpired">
+      <http:operation location="/HasTicketExpired" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AmsAuthentication">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;b&gt;This Web Service implements the functionality of perform AMS authentication.&lt;/b&gt;</wsdl:documentation>
+    <wsdl:port name="AmsAuthenticationSoap" binding="tns:AmsAuthenticationSoap">
+      <soap:address location="http://localhost/Ams/AmsAuthentication.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AmsAuthenticationSoap12" binding="tns:AmsAuthenticationSoap12">
+      <soap12:address location="http://localhost/Ams/AmsAuthentication.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AmsAuthenticationHttpGet" binding="tns:AmsAuthenticationHttpGet">
+      <http:address location="http://localhost/Ams/AmsAuthentication.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AmsAuthenticationHttpPost" binding="tns:AmsAuthenticationHttpPost">
+      <http:address location="http://localhost/Ams/AmsAuthentication.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

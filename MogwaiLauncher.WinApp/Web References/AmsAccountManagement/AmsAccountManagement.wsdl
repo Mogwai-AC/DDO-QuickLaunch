@@ -1,0 +1,843 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.turbine.com/SE/AMS" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.turbine.com/SE/AMS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;b&gt;This Web Service implements the functionality of managing AMS acccounts.&lt;/b&gt;</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.turbine.com/SE/AMS">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="CreateAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountInfo" type="tns:NewAccountInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NewAccountInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BillingId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParentAccountName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Enabled" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthenticationProvider" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateOfBirth" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimaryPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SecondaryPhone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Gender" type="s1:char" />
+          <s:element minOccurs="0" maxOccurs="1" name="Secret" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateAccountResult" type="tns:AccountInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AccountInformation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="AccountId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="AmsId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentAccountId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Enabled" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthenticationProvider" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Secret" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SecretLastChangeDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateOfBirth" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimaryPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SecondaryPhone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Gender" type="s1:char" />
+          <s:element minOccurs="1" maxOccurs="1" name="BannedUntil" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountInfo" type="tns:UpdatedAccountInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UpdatedAccountInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BillingId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParentAccountName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Enabled" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthenticationProvider" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateOfBirth" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimaryPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SecondaryPhone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Gender" type="s1:char" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateAccountResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="EnableAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="enable" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnableAccountResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SetPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oldPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetPasswordResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SetNewPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetNewPasswordResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RetrieveAccountById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="accountId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveAccountByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetrieveAccountByIdResult" type="tns:AccountInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveAccountByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveAccountByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetrieveAccountByNameResult" type="tns:AccountInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AccountNameExists">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AccountNameExistsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AccountNameExistsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnumerateAccountsByEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="eMail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnumerateAccountsByEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EnumerateAccountsByEmailResult" type="tns:ArrayOfAccountInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAccountInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AccountInformation" nillable="true" type="tns:AccountInformation" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EnumerateFilteredAccounts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnumerateFilteredAccountsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EnumerateFilteredAccountsResult" type="tns:ArrayOfAccountInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AccountInformation" nillable="true" type="tns:AccountInformation" />
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="ArrayOfAccountInformation" nillable="true" type="tns:ArrayOfAccountInformation" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="char">
+        <s:restriction base="s:unsignedShort" />
+      </s:simpleType>
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateAccount" />
+  </wsdl:message>
+  <wsdl:message name="CreateAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateAccount" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnableAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:EnableAccount" />
+  </wsdl:message>
+  <wsdl:message name="EnableAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:EnableAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetPasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:SetPassword" />
+  </wsdl:message>
+  <wsdl:message name="SetPasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:SetPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetNewPasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:SetNewPassword" />
+  </wsdl:message>
+  <wsdl:message name="SetNewPasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:SetNewPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveAccountByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:RetrieveAccountById" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveAccountByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:RetrieveAccountByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveAccountByNameSoapIn">
+    <wsdl:part name="parameters" element="tns:RetrieveAccountByName" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveAccountByNameSoapOut">
+    <wsdl:part name="parameters" element="tns:RetrieveAccountByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="AccountNameExistsSoapIn">
+    <wsdl:part name="parameters" element="tns:AccountNameExists" />
+  </wsdl:message>
+  <wsdl:message name="AccountNameExistsSoapOut">
+    <wsdl:part name="parameters" element="tns:AccountNameExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateAccountsByEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:EnumerateAccountsByEmail" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateAccountsByEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:EnumerateAccountsByEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateFilteredAccountsSoapIn">
+    <wsdl:part name="parameters" element="tns:EnumerateFilteredAccounts" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateFilteredAccountsSoapOut">
+    <wsdl:part name="parameters" element="tns:EnumerateFilteredAccountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnableAccountHttpGetIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="accountName" type="s:string" />
+    <wsdl:part name="enable" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EnableAccountHttpGetOut" />
+  <wsdl:message name="SetPasswordHttpGetIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="accountName" type="s:string" />
+    <wsdl:part name="oldPassword" type="s:string" />
+    <wsdl:part name="newPassword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetPasswordHttpGetOut" />
+  <wsdl:message name="SetNewPasswordHttpGetIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="accountName" type="s:string" />
+    <wsdl:part name="newPassword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetNewPasswordHttpGetOut" />
+  <wsdl:message name="RetrieveAccountByNameHttpGetIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveAccountByNameHttpGetOut">
+    <wsdl:part name="Body" element="tns:AccountInformation" />
+  </wsdl:message>
+  <wsdl:message name="AccountNameExistsHttpGetIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AccountNameExistsHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateAccountsByEmailHttpGetIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="eMail" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateAccountsByEmailHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAccountInformation" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateFilteredAccountsHttpGetIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="filter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateFilteredAccountsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAccountInformation" />
+  </wsdl:message>
+  <wsdl:message name="EnableAccountHttpPostIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="accountName" type="s:string" />
+    <wsdl:part name="enable" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EnableAccountHttpPostOut" />
+  <wsdl:message name="SetPasswordHttpPostIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="accountName" type="s:string" />
+    <wsdl:part name="oldPassword" type="s:string" />
+    <wsdl:part name="newPassword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetPasswordHttpPostOut" />
+  <wsdl:message name="SetNewPasswordHttpPostIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="accountName" type="s:string" />
+    <wsdl:part name="newPassword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetNewPasswordHttpPostOut" />
+  <wsdl:message name="RetrieveAccountByNameHttpPostIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveAccountByNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:AccountInformation" />
+  </wsdl:message>
+  <wsdl:message name="AccountNameExistsHttpPostIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AccountNameExistsHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateAccountsByEmailHttpPostIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="eMail" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateAccountsByEmailHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAccountInformation" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateFilteredAccountsHttpPostIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="filter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateFilteredAccountsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAccountInformation" />
+  </wsdl:message>
+  <wsdl:portType name="AmsAccountManagementSoap">
+    <wsdl:operation name="CreateAccount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method creates a new account from the specified parameters.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;NewAccountInformation &lt;b&gt;accountInfo&lt;/b&gt; - &lt;i&gt;The information used to create the account.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns the newly created account.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:CreateAccountSoapIn" />
+      <wsdl:output message="tns:CreateAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method updates all information in the specified account.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;name&lt;/b&gt; - &lt;i&gt;The name of the account to update.&lt;/i&gt;&lt;br&gt;UpdatedAccountInformation &lt;b&gt;accountInfo&lt;/b&gt; - &lt;i&gt;The information used to update the account.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:UpdateAccountSoapIn" />
+      <wsdl:output message="tns:UpdateAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnableAccount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method enables the specified account.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;accountName&lt;/b&gt; - &lt;i&gt;The name of the account to enable or disable.&lt;/i&gt;&lt;br&gt;bool &lt;b&gt;enable&lt;/b&gt; - &lt;i&gt;True to enable the account, false to disable the account.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnableAccountSoapIn" />
+      <wsdl:output message="tns:EnableAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPassword">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method sets the password for the specified account.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;accountName&lt;/b&gt; - &lt;i&gt;The name of the account to set the password.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;oldPassword&lt;/b&gt; - &lt;i&gt;The current password for the account.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;newPassword&lt;/b&gt; - &lt;i&gt;The new password for the account.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:SetPasswordSoapIn" />
+      <wsdl:output message="tns:SetPasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetNewPassword">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method sets the password for the specified account.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;accountName&lt;/b&gt; - &lt;i&gt;The name of the account to set the password.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;newPassword&lt;/b&gt; - &lt;i&gt;The new password for the account.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:SetNewPasswordSoapIn" />
+      <wsdl:output message="tns:SetNewPasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveAccountById">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method retrieves the account with the specified ID.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;Guid &lt;b&gt;accountId&lt;/b&gt; - &lt;i&gt;The unique identifier of the account to retrieve.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns the account with the specified ID.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:RetrieveAccountByIdSoapIn" />
+      <wsdl:output message="tns:RetrieveAccountByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveAccountByName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method retrieves the account with the specified name.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;name&lt;/b&gt; - &lt;i&gt;The name of the account to retrieve.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns the account with the specified name.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:RetrieveAccountByNameSoapIn" />
+      <wsdl:output message="tns:RetrieveAccountByNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AccountNameExists">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method checks if the account with the specified name already exists.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;name&lt;/b&gt; - &lt;i&gt;The unique name of the account to retrieve.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:AccountNameExistsSoapIn" />
+      <wsdl:output message="tns:AccountNameExistsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateAccountsByEmail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method enumerates all accounts with the specified e-mail address.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;eMail&lt;/b&gt; - &lt;i&gt;The e-mail address of the accounts to retrieve.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns an array of accounts.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnumerateAccountsByEmailSoapIn" />
+      <wsdl:output message="tns:EnumerateAccountsByEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateFilteredAccounts">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method enumerates all accounts matching the specified filter.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;filer&lt;/b&gt; - &lt;i&gt;The filter used to retrieve accounts.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns an array of accounts.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnumerateFilteredAccountsSoapIn" />
+      <wsdl:output message="tns:EnumerateFilteredAccountsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AmsAccountManagementHttpGet">
+    <wsdl:operation name="EnableAccount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method enables the specified account.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;accountName&lt;/b&gt; - &lt;i&gt;The name of the account to enable or disable.&lt;/i&gt;&lt;br&gt;bool &lt;b&gt;enable&lt;/b&gt; - &lt;i&gt;True to enable the account, false to disable the account.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnableAccountHttpGetIn" />
+      <wsdl:output message="tns:EnableAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPassword">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method sets the password for the specified account.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;accountName&lt;/b&gt; - &lt;i&gt;The name of the account to set the password.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;oldPassword&lt;/b&gt; - &lt;i&gt;The current password for the account.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;newPassword&lt;/b&gt; - &lt;i&gt;The new password for the account.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:SetPasswordHttpGetIn" />
+      <wsdl:output message="tns:SetPasswordHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetNewPassword">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method sets the password for the specified account.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;accountName&lt;/b&gt; - &lt;i&gt;The name of the account to set the password.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;newPassword&lt;/b&gt; - &lt;i&gt;The new password for the account.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:SetNewPasswordHttpGetIn" />
+      <wsdl:output message="tns:SetNewPasswordHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveAccountByName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method retrieves the account with the specified name.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;name&lt;/b&gt; - &lt;i&gt;The name of the account to retrieve.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns the account with the specified name.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:RetrieveAccountByNameHttpGetIn" />
+      <wsdl:output message="tns:RetrieveAccountByNameHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AccountNameExists">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method checks if the account with the specified name already exists.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;name&lt;/b&gt; - &lt;i&gt;The unique name of the account to retrieve.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:AccountNameExistsHttpGetIn" />
+      <wsdl:output message="tns:AccountNameExistsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateAccountsByEmail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method enumerates all accounts with the specified e-mail address.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;eMail&lt;/b&gt; - &lt;i&gt;The e-mail address of the accounts to retrieve.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns an array of accounts.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnumerateAccountsByEmailHttpGetIn" />
+      <wsdl:output message="tns:EnumerateAccountsByEmailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateFilteredAccounts">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method enumerates all accounts matching the specified filter.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;filer&lt;/b&gt; - &lt;i&gt;The filter used to retrieve accounts.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns an array of accounts.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnumerateFilteredAccountsHttpGetIn" />
+      <wsdl:output message="tns:EnumerateFilteredAccountsHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AmsAccountManagementHttpPost">
+    <wsdl:operation name="EnableAccount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method enables the specified account.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;accountName&lt;/b&gt; - &lt;i&gt;The name of the account to enable or disable.&lt;/i&gt;&lt;br&gt;bool &lt;b&gt;enable&lt;/b&gt; - &lt;i&gt;True to enable the account, false to disable the account.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnableAccountHttpPostIn" />
+      <wsdl:output message="tns:EnableAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPassword">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method sets the password for the specified account.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;accountName&lt;/b&gt; - &lt;i&gt;The name of the account to set the password.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;oldPassword&lt;/b&gt; - &lt;i&gt;The current password for the account.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;newPassword&lt;/b&gt; - &lt;i&gt;The new password for the account.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:SetPasswordHttpPostIn" />
+      <wsdl:output message="tns:SetPasswordHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetNewPassword">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method sets the password for the specified account.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;accountName&lt;/b&gt; - &lt;i&gt;The name of the account to set the password.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;newPassword&lt;/b&gt; - &lt;i&gt;The new password for the account.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:SetNewPasswordHttpPostIn" />
+      <wsdl:output message="tns:SetNewPasswordHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveAccountByName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method retrieves the account with the specified name.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;name&lt;/b&gt; - &lt;i&gt;The name of the account to retrieve.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns the account with the specified name.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:RetrieveAccountByNameHttpPostIn" />
+      <wsdl:output message="tns:RetrieveAccountByNameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AccountNameExists">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method checks if the account with the specified name already exists.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;name&lt;/b&gt; - &lt;i&gt;The unique name of the account to retrieve.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:AccountNameExistsHttpPostIn" />
+      <wsdl:output message="tns:AccountNameExistsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateAccountsByEmail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method enumerates all accounts with the specified e-mail address.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;eMail&lt;/b&gt; - &lt;i&gt;The e-mail address of the accounts to retrieve.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns an array of accounts.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnumerateAccountsByEmailHttpPostIn" />
+      <wsdl:output message="tns:EnumerateAccountsByEmailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateFilteredAccounts">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method enumerates all accounts matching the specified filter.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;filer&lt;/b&gt; - &lt;i&gt;The filter used to retrieve accounts.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns an array of accounts.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnumerateFilteredAccountsHttpPostIn" />
+      <wsdl:output message="tns:EnumerateFilteredAccountsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AmsAccountManagementSoap" type="tns:AmsAccountManagementSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateAccount">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/CreateAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccount">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/UpdateAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnableAccount">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/EnableAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPassword">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/SetPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNewPassword">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/SetNewPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveAccountById">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/RetrieveAccountById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveAccountByName">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/RetrieveAccountByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountNameExists">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/AccountNameExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateAccountsByEmail">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/EnumerateAccountsByEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateFilteredAccounts">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/EnumerateFilteredAccounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AmsAccountManagementSoap12" type="tns:AmsAccountManagementSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateAccount">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/CreateAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccount">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/UpdateAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnableAccount">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/EnableAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPassword">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/SetPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNewPassword">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/SetNewPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveAccountById">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/RetrieveAccountById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveAccountByName">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/RetrieveAccountByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountNameExists">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/AccountNameExists" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateAccountsByEmail">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/EnumerateAccountsByEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateFilteredAccounts">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/EnumerateFilteredAccounts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AmsAccountManagementHttpGet" type="tns:AmsAccountManagementHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="EnableAccount">
+      <http:operation location="/EnableAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SetPassword">
+      <http:operation location="/SetPassword" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SetNewPassword">
+      <http:operation location="/SetNewPassword" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveAccountByName">
+      <http:operation location="/RetrieveAccountByName" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountNameExists">
+      <http:operation location="/AccountNameExists" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateAccountsByEmail">
+      <http:operation location="/EnumerateAccountsByEmail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateFilteredAccounts">
+      <http:operation location="/EnumerateFilteredAccounts" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AmsAccountManagementHttpPost" type="tns:AmsAccountManagementHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="EnableAccount">
+      <http:operation location="/EnableAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SetPassword">
+      <http:operation location="/SetPassword" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SetNewPassword">
+      <http:operation location="/SetNewPassword" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveAccountByName">
+      <http:operation location="/RetrieveAccountByName" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountNameExists">
+      <http:operation location="/AccountNameExists" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateAccountsByEmail">
+      <http:operation location="/EnumerateAccountsByEmail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateFilteredAccounts">
+      <http:operation location="/EnumerateFilteredAccounts" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AmsAccountManagement">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;b&gt;This Web Service implements the functionality of managing AMS acccounts.&lt;/b&gt;</wsdl:documentation>
+    <wsdl:port name="AmsAccountManagementSoap" binding="tns:AmsAccountManagementSoap">
+      <soap:address location="http://localhost/Ams/AmsAccountManagement.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AmsAccountManagementSoap12" binding="tns:AmsAccountManagementSoap12">
+      <soap12:address location="http://localhost/Ams/AmsAccountManagement.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AmsAccountManagementHttpGet" binding="tns:AmsAccountManagementHttpGet">
+      <http:address location="http://localhost/Ams/AmsAccountManagement.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AmsAccountManagementHttpPost" binding="tns:AmsAccountManagementHttpPost">
+      <http:address location="http://localhost/Ams/AmsAccountManagement.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

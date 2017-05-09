@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.turbine.com/SE/AMS" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.turbine.com/SE/AMS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;b&gt;This Web Service implements the functionality of managing AMS subscriptions.&lt;/b&gt;.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.turbine.com/SE/AMS">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="CreateSubscription">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="subscriptionInfo" type="tns:NewSubscriptionInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NewSubscriptionInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BillingId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Product" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEnabled" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BannedUntil" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubscriptionKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Level" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateSubscriptionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateSubscriptionResult" type="tns:SubscriptionInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SubscriptionInformation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SubscriptionId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="AmsId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AccountId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProductId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BannedUntil" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsBanned" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEnabled" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubscriptionKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Level" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateSubscription">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="subscriptionInfo" type="tns:UpdatedSubscriptionInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UpdatedSubscriptionInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BillingId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEnabled" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BannedUntil" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateSubscriptionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="EnableSubscription">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="enable" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnableSubscriptionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="BanSubscription">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="duration" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BanSubscriptionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UnbanSubscription">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnbanSubscriptionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RetrieveSubscriptionByKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveSubscriptionByKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetrieveSubscriptionByKeyResult" type="tns:SubscriptionInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnumerateSubscriptionsByAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnumerateSubscriptionsByAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EnumerateSubscriptionsByAccountResult" type="tns:ArrayOfSubscriptionInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSubscriptionInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SubscriptionInformation" nillable="true" type="tns:SubscriptionInformation" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EnumerateFilteredSubscriptions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnumerateFilteredSubscriptionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EnumerateFilteredSubscriptionsResult" type="tns:ArrayOfSubscriptionInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubscriptionInformation" nillable="true" type="tns:SubscriptionInformation" />
+      <s:element name="ArrayOfSubscriptionInformation" nillable="true" type="tns:ArrayOfSubscriptionInformation" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateSubscriptionSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateSubscription" />
+  </wsdl:message>
+  <wsdl:message name="CreateSubscriptionSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateSubscriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSubscriptionSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateSubscription" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSubscriptionSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateSubscriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnableSubscriptionSoapIn">
+    <wsdl:part name="parameters" element="tns:EnableSubscription" />
+  </wsdl:message>
+  <wsdl:message name="EnableSubscriptionSoapOut">
+    <wsdl:part name="parameters" element="tns:EnableSubscriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="BanSubscriptionSoapIn">
+    <wsdl:part name="parameters" element="tns:BanSubscription" />
+  </wsdl:message>
+  <wsdl:message name="BanSubscriptionSoapOut">
+    <wsdl:part name="parameters" element="tns:BanSubscriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnbanSubscriptionSoapIn">
+    <wsdl:part name="parameters" element="tns:UnbanSubscription" />
+  </wsdl:message>
+  <wsdl:message name="UnbanSubscriptionSoapOut">
+    <wsdl:part name="parameters" element="tns:UnbanSubscriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveSubscriptionByKeySoapIn">
+    <wsdl:part name="parameters" element="tns:RetrieveSubscriptionByKey" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveSubscriptionByKeySoapOut">
+    <wsdl:part name="parameters" element="tns:RetrieveSubscriptionByKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateSubscriptionsByAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:EnumerateSubscriptionsByAccount" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateSubscriptionsByAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:EnumerateSubscriptionsByAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateFilteredSubscriptionsSoapIn">
+    <wsdl:part name="parameters" element="tns:EnumerateFilteredSubscriptions" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateFilteredSubscriptionsSoapOut">
+    <wsdl:part name="parameters" element="tns:EnumerateFilteredSubscriptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnableSubscriptionHttpGetIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="key" type="s:string" />
+    <wsdl:part name="enable" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EnableSubscriptionHttpGetOut" />
+  <wsdl:message name="BanSubscriptionHttpGetIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="key" type="s:string" />
+    <wsdl:part name="duration" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BanSubscriptionHttpGetOut" />
+  <wsdl:message name="UnbanSubscriptionHttpGetIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UnbanSubscriptionHttpGetOut" />
+  <wsdl:message name="RetrieveSubscriptionByKeyHttpGetIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveSubscriptionByKeyHttpGetOut">
+    <wsdl:part name="Body" element="tns:SubscriptionInformation" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateSubscriptionsByAccountHttpGetIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="accountName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateSubscriptionsByAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfSubscriptionInformation" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateFilteredSubscriptionsHttpGetIn">
+    <wsdl:part name="filter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateFilteredSubscriptionsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfSubscriptionInformation" />
+  </wsdl:message>
+  <wsdl:message name="EnableSubscriptionHttpPostIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="key" type="s:string" />
+    <wsdl:part name="enable" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EnableSubscriptionHttpPostOut" />
+  <wsdl:message name="BanSubscriptionHttpPostIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="key" type="s:string" />
+    <wsdl:part name="duration" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BanSubscriptionHttpPostOut" />
+  <wsdl:message name="UnbanSubscriptionHttpPostIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UnbanSubscriptionHttpPostOut" />
+  <wsdl:message name="RetrieveSubscriptionByKeyHttpPostIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveSubscriptionByKeyHttpPostOut">
+    <wsdl:part name="Body" element="tns:SubscriptionInformation" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateSubscriptionsByAccountHttpPostIn">
+    <wsdl:part name="ticket" type="s:string" />
+    <wsdl:part name="accountName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateSubscriptionsByAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfSubscriptionInformation" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateFilteredSubscriptionsHttpPostIn">
+    <wsdl:part name="filter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EnumerateFilteredSubscriptionsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfSubscriptionInformation" />
+  </wsdl:message>
+  <wsdl:portType name="AmsSubscriptionManagementSoap">
+    <wsdl:operation name="CreateSubscription">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method creates a new subscription from the specified parameters.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;SubscriptionInformation &lt;b&gt;subscriptionInfo&lt;/b&gt; - &lt;i&gt;The information used to create the subscription.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns the newly created subscription.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:CreateSubscriptionSoapIn" />
+      <wsdl:output message="tns:CreateSubscriptionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSubscription">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method updates all information in the specified subscription.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;key&lt;/b&gt; - &lt;i&gt;The unique key of the subscription to update.&lt;/i&gt;&lt;br&gt;SubscriptionInformation &lt;b&gt;subscriptionInfo&lt;/b&gt; - &lt;i&gt;The information used to update the subscription.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:UpdateSubscriptionSoapIn" />
+      <wsdl:output message="tns:UpdateSubscriptionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnableSubscription">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method enables the specified subscription.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;key&lt;/b&gt; - &lt;i&gt;The unique key of the subscription to enable or disable.&lt;/i&gt;&lt;br&gt;bool &lt;b&gt;enable&lt;/b&gt; - &lt;i&gt;True to enable the subscription, false to disable the subscription.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnableSubscriptionSoapIn" />
+      <wsdl:output message="tns:EnableSubscriptionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BanSubscription">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method bans the specified subscription for the specified duration.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;key&lt;/b&gt; - &lt;i&gt;The unique identifier of the subscription to ban.&lt;/i&gt;&lt;br&gt;int &lt;b&gt;duration&lt;/b&gt; - &lt;i&gt;The duration, in seconds, to ban the subscription.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:BanSubscriptionSoapIn" />
+      <wsdl:output message="tns:BanSubscriptionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnbanSubscription">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method unbans the specified subscription.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;key&lt;/b&gt; - &lt;i&gt;The unique key of the subscription to unban.&lt;/i&gt;&lt;br&gt;</wsdl:documentation>
+      <wsdl:input message="tns:UnbanSubscriptionSoapIn" />
+      <wsdl:output message="tns:UnbanSubscriptionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveSubscriptionByKey">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method retrieves the subscription with the specified key.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;key&lt;/b&gt; - &lt;i&gt;The unique key of the subscription to retrieve.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:RetrieveSubscriptionByKeySoapIn" />
+      <wsdl:output message="tns:RetrieveSubscriptionByKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateSubscriptionsByAccount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method enumerates all subscriptions for the specified account.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;accountName&lt;/b&gt; - &lt;i&gt;The name of the account whose subscriptions to retrieve.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns an array of subscriptions.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnumerateSubscriptionsByAccountSoapIn" />
+      <wsdl:output message="tns:EnumerateSubscriptionsByAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateFilteredSubscriptions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method enumerates all subscriptions matching the specified filter.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;filter&lt;/b&gt; - &lt;i&gt;The filter used to retrieve subscriptions.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns an array of subscriptions.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnumerateFilteredSubscriptionsSoapIn" />
+      <wsdl:output message="tns:EnumerateFilteredSubscriptionsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AmsSubscriptionManagementHttpGet">
+    <wsdl:operation name="EnableSubscription">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method enables the specified subscription.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;key&lt;/b&gt; - &lt;i&gt;The unique key of the subscription to enable or disable.&lt;/i&gt;&lt;br&gt;bool &lt;b&gt;enable&lt;/b&gt; - &lt;i&gt;True to enable the subscription, false to disable the subscription.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnableSubscriptionHttpGetIn" />
+      <wsdl:output message="tns:EnableSubscriptionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BanSubscription">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method bans the specified subscription for the specified duration.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;key&lt;/b&gt; - &lt;i&gt;The unique identifier of the subscription to ban.&lt;/i&gt;&lt;br&gt;int &lt;b&gt;duration&lt;/b&gt; - &lt;i&gt;The duration, in seconds, to ban the subscription.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:BanSubscriptionHttpGetIn" />
+      <wsdl:output message="tns:BanSubscriptionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnbanSubscription">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method unbans the specified subscription.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;key&lt;/b&gt; - &lt;i&gt;The unique key of the subscription to unban.&lt;/i&gt;&lt;br&gt;</wsdl:documentation>
+      <wsdl:input message="tns:UnbanSubscriptionHttpGetIn" />
+      <wsdl:output message="tns:UnbanSubscriptionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveSubscriptionByKey">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method retrieves the subscription with the specified key.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;key&lt;/b&gt; - &lt;i&gt;The unique key of the subscription to retrieve.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:RetrieveSubscriptionByKeyHttpGetIn" />
+      <wsdl:output message="tns:RetrieveSubscriptionByKeyHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateSubscriptionsByAccount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method enumerates all subscriptions for the specified account.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;accountName&lt;/b&gt; - &lt;i&gt;The name of the account whose subscriptions to retrieve.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns an array of subscriptions.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnumerateSubscriptionsByAccountHttpGetIn" />
+      <wsdl:output message="tns:EnumerateSubscriptionsByAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateFilteredSubscriptions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method enumerates all subscriptions matching the specified filter.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;filter&lt;/b&gt; - &lt;i&gt;The filter used to retrieve subscriptions.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns an array of subscriptions.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnumerateFilteredSubscriptionsHttpGetIn" />
+      <wsdl:output message="tns:EnumerateFilteredSubscriptionsHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AmsSubscriptionManagementHttpPost">
+    <wsdl:operation name="EnableSubscription">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method enables the specified subscription.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;key&lt;/b&gt; - &lt;i&gt;The unique key of the subscription to enable or disable.&lt;/i&gt;&lt;br&gt;bool &lt;b&gt;enable&lt;/b&gt; - &lt;i&gt;True to enable the subscription, false to disable the subscription.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnableSubscriptionHttpPostIn" />
+      <wsdl:output message="tns:EnableSubscriptionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BanSubscription">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method bans the specified subscription for the specified duration.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;key&lt;/b&gt; - &lt;i&gt;The unique identifier of the subscription to ban.&lt;/i&gt;&lt;br&gt;int &lt;b&gt;duration&lt;/b&gt; - &lt;i&gt;The duration, in seconds, to ban the subscription.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:BanSubscriptionHttpPostIn" />
+      <wsdl:output message="tns:BanSubscriptionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnbanSubscription">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method unbans the specified subscription.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;key&lt;/b&gt; - &lt;i&gt;The unique key of the subscription to unban.&lt;/i&gt;&lt;br&gt;</wsdl:documentation>
+      <wsdl:input message="tns:UnbanSubscriptionHttpPostIn" />
+      <wsdl:output message="tns:UnbanSubscriptionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveSubscriptionByKey">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method retrieves the subscription with the specified key.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;key&lt;/b&gt; - &lt;i&gt;The unique key of the subscription to retrieve.&lt;/i&gt;&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:RetrieveSubscriptionByKeyHttpPostIn" />
+      <wsdl:output message="tns:RetrieveSubscriptionByKeyHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateSubscriptionsByAccount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method enumerates all subscriptions for the specified account.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;accountName&lt;/b&gt; - &lt;i&gt;The name of the account whose subscriptions to retrieve.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns an array of subscriptions.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnumerateSubscriptionsByAccountHttpPostIn" />
+      <wsdl:output message="tns:EnumerateSubscriptionsByAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateFilteredSubscriptions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;This method enumerates all subscriptions matching the specified filter.&lt;/p&gt;&lt;p&gt;string &lt;b&gt;ticket&lt;/b&gt; - &lt;i&gt;The authentication ticket.&lt;/i&gt;&lt;br&gt;string &lt;b&gt;filter&lt;/b&gt; - &lt;i&gt;The filter used to retrieve subscriptions.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Returns an array of subscriptions.&lt;/p&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnumerateFilteredSubscriptionsHttpPostIn" />
+      <wsdl:output message="tns:EnumerateFilteredSubscriptionsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AmsSubscriptionManagementSoap" type="tns:AmsSubscriptionManagementSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateSubscription">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/CreateSubscription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSubscription">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/UpdateSubscription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnableSubscription">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/EnableSubscription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BanSubscription">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/BanSubscription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnbanSubscription">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/UnbanSubscription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveSubscriptionByKey">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/RetrieveSubscriptionByKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateSubscriptionsByAccount">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/EnumerateSubscriptionsByAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateFilteredSubscriptions">
+      <soap:operation soapAction="http://www.turbine.com/SE/AMS/EnumerateFilteredSubscriptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AmsSubscriptionManagementSoap12" type="tns:AmsSubscriptionManagementSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateSubscription">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/CreateSubscription" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSubscription">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/UpdateSubscription" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnableSubscription">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/EnableSubscription" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BanSubscription">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/BanSubscription" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnbanSubscription">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/UnbanSubscription" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveSubscriptionByKey">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/RetrieveSubscriptionByKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateSubscriptionsByAccount">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/EnumerateSubscriptionsByAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateFilteredSubscriptions">
+      <soap12:operation soapAction="http://www.turbine.com/SE/AMS/EnumerateFilteredSubscriptions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AmsSubscriptionManagementHttpGet" type="tns:AmsSubscriptionManagementHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="EnableSubscription">
+      <http:operation location="/EnableSubscription" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="BanSubscription">
+      <http:operation location="/BanSubscription" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="UnbanSubscription">
+      <http:operation location="/UnbanSubscription" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveSubscriptionByKey">
+      <http:operation location="/RetrieveSubscriptionByKey" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateSubscriptionsByAccount">
+      <http:operation location="/EnumerateSubscriptionsByAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateFilteredSubscriptions">
+      <http:operation location="/EnumerateFilteredSubscriptions" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AmsSubscriptionManagementHttpPost" type="tns:AmsSubscriptionManagementHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="EnableSubscription">
+      <http:operation location="/EnableSubscription" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="BanSubscription">
+      <http:operation location="/BanSubscription" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="UnbanSubscription">
+      <http:operation location="/UnbanSubscription" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveSubscriptionByKey">
+      <http:operation location="/RetrieveSubscriptionByKey" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateSubscriptionsByAccount">
+      <http:operation location="/EnumerateSubscriptionsByAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnumerateFilteredSubscriptions">
+      <http:operation location="/EnumerateFilteredSubscriptions" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AmsSubscriptionManagement">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;b&gt;This Web Service implements the functionality of managing AMS subscriptions.&lt;/b&gt;.</wsdl:documentation>
+    <wsdl:port name="AmsSubscriptionManagementSoap" binding="tns:AmsSubscriptionManagementSoap">
+      <soap:address location="http://localhost/Ams/AmsSubscriptionManagement.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AmsSubscriptionManagementSoap12" binding="tns:AmsSubscriptionManagementSoap12">
+      <soap12:address location="http://localhost/Ams/AmsSubscriptionManagement.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AmsSubscriptionManagementHttpGet" binding="tns:AmsSubscriptionManagementHttpGet">
+      <http:address location="http://localhost/Ams/AmsSubscriptionManagement.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AmsSubscriptionManagementHttpPost" binding="tns:AmsSubscriptionManagementHttpPost">
+      <http:address location="http://localhost/Ams/AmsSubscriptionManagement.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

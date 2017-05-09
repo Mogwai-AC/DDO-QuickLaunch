@@ -1,0 +1,42 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MogwaiLauncher.WinApp.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MogwaiLauncher_WinApp_Turbine_GLS_GLS_x0020_Datacenter_x0020_Info_x0020_Server" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://gls.ddo.com/GLS.DataCenterServer/Service.asmx</Value>
+    </Setting>
+    <Setting Name="MogwaiLauncher_WinApp_Turbine_GLS_Auth_Global_x0020_Login_x0020_System_x0020_Authentication_x0020_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://gls-auth.ddo.com/GLS.AuthServer/Service.asmx</Value>
+    </Setting>
+    <Setting Name="LocalLotroLauncher_WinApp_Turbine_GLS_GLS_x0020_Datacenter_x0020_Info_x0020_Server" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://gls.ddo.com/GLS.DataCenterServer/Service.asmx</Value>
+    </Setting>
+    <Setting Name="LocalLotroLauncher_WinApp_Turbine_GLS_Auth_Global_x0020_Login_x0020_System_x0020_Authentication_x0020_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://gls-auth.ddo.com/GLS.AuthServer/Service.asmx</Value>
+    </Setting>
+    <Setting Name="MogwaiLauncher_WinApp_AmsAccountManagement_AmsAccountManagement" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/Ams/AmsAccountManagement.asmx</Value>
+    </Setting>
+    <Setting Name="MogwaiLauncher_WinApp_AmsSubscriptionManagement_AmsSubscriptionManagement" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/Ams/AmsSubscriptionManagement.asmx</Value>
+    </Setting>
+    <Setting Name="MogwaiLauncher_WinApp_AmsAuthentication_AmsAuthentication" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/Ams/AmsAuthentication.asmx</Value>
+    </Setting>
+    <Setting Name="LocalLauncher_WinApp_AmsAccountManagement_AmsAccountManagement" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/Ams/AmsAccountManagement.asmx</Value>
+    </Setting>
+    <Setting Name="LocalLauncher_WinApp_AmsAuthentication_AmsAuthentication" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/Ams/AmsAuthentication.asmx</Value>
+    </Setting>
+    <Setting Name="LocalLauncher_WinApp_AmsSubscriptionManagement_AmsSubscriptionManagement" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/Ams/AmsSubscriptionManagement.asmx</Value>
+    </Setting>
+    <Setting Name="LocalLauncher_WinApp_Turbine_GLS_GLS_x0020_Datacenter_x0020_Info_x0020_Server" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://gls.ddo.com/GLS.DataCenterServer/Service.asmx</Value>
+    </Setting>
+    <Setting Name="LocalLauncher_WinApp_Turbine_GLS_Auth_Global_x0020_Login_x0020_System_x0020_Authentication_x0020_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://gls-auth.ddo.com/GLS.AuthServer/Service.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
