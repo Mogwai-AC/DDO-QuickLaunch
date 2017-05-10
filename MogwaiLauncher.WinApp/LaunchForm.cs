@@ -143,7 +143,7 @@ namespace MogwaiLauncher.WinApp
         {
             Application.Exit();
         }
-        
+
         private void bntPlay_Click(object sender, EventArgs e)
         {
             string sub = results.Subscriptions[cbSubscriptions.SelectedIndex].Name;
@@ -172,7 +172,7 @@ namespace MogwaiLauncher.WinApp
 
             if (clientArray == null || clientArray.Length == 0)
             {
-                MessageBox.Show("QuickLaunch has detected that you do not have any game client directories configured.  Please select any game client directories you wish to use with QuickLaunch.  You can use your main install folders, preview server folders, and private config clients (ie, Mournlands) for DDO or LOTRO.", "QuickLaunch");
+                MessageBox.Show("QuickLaunch has detected that you do not have any game client directories configured.  Please select any game client directories you wish to use with QuickLaunch by locating TurbineLauncher.exe.config.  You can use your main install folders, preview server folders, and private config clients for DDO.", "DDO QuickLaunch");
                 (new FindClientForm()).ShowDialog();
                 clientArray = Settings.GameClients.Split(new char[1] { '|' }, StringSplitOptions.RemoveEmptyEntries);
                 Settings.GameClients = String.Join("|", clientArray);
@@ -215,6 +215,11 @@ namespace MogwaiLauncher.WinApp
         }
 
         private void btnCreateShortcut_Click(object sender, EventArgs e)
+        {
+            (new ShortcutCreator()).ShowDialog();
+        }
+
+        private void createShortcutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             (new ShortcutCreator()).ShowDialog();
         }

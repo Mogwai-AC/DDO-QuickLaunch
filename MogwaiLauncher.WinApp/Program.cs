@@ -9,97 +9,91 @@ using System.Xml.Linq;
 
 namespace MogwaiLauncher.WinApp
 {
-  static class Program
-  {
-    /// <summary>
-    /// The main entry point for the application.
-    /// </summary>
-    [STAThread]
-    static void Main(string[] args)
+    static class Program
     {
-      string worldName = "";
-      string subscriptionName = "";
-      string language = System.Globalization.CultureInfo.CurrentCulture.Parent.EnglishName;
-      string username = Settings.Username;
-      string password = Settings.Password;
-      string clientDir = null;
-
-      if (args.Length > 0)
-      {
-        foreach (string arg in args)
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main(string[] args)
         {
-          if (arg.Length > 3 && arg[0] == '/' && arg[2] == ':')
-          {
-            switch (arg[1])
+            string worldName = "";
+            string subscriptionName = "";
+            string language = System.Globalization.CultureInfo.CurrentCulture.Parent.EnglishName;
+            string username = Settings.Username;
+            string password = Settings.Password;
+            string clientDir = null;
+
+            if (args.Length > 0)
             {
-              case 'w':
-                worldName = arg.Substring(3);
-                break;
-              case 's':
-                subscriptionName = arg.Substring(3);
-                break;
-              case 'l':
-                language = arg.Substring(3);
-                break;
-              case 'u':
-                username = Util.DecryptString(arg.Substring(3));
-                break;
-              case 'p':
-                password = Util.DecryptString(arg.Substring(3));
-                break;
-              case 'd':
-                clientDir = arg.Substring(3).Replace("\"", "");
-                break;
+                foreach (string arg in args)
+                {
+                    if (arg.Length > 3 && arg[0] == '/' && arg[2] == ':')
+                    {
+                        switch (arg[1])
+                        {
+                            case 'w':
+                                worldName = arg.Substring(3);
+                                break;
+                            case 's':
+                                subscriptionName = arg.Substring(3);
+                                break;
+                            case 'l':
+                                language = arg.Substring(3);
+                                break;
+                            case 'u':
+                                username = Util.DecryptString(arg.Substring(3));
+                                break;
+                            case 'p':
+                                password = Util.DecryptString(arg.Substring(3));
+                                break;
+                            case 'd':
+                                clientDir = arg.Substring(3).Replace("\"", "");
+                                break;
+                        }
+                    }
+                }
             }
-          }
-        }
-      }
 
-      if (!string.IsNullOrEmpty(clientDir) && System.IO.Directory.Exists(clientDir))
-        System.IO.Directory.SetCurrentDirectory(clientDir);
+            if (!string.IsNullOrEmpty(clientDir) && System.IO.Directory.Exists(clientDir))
+                System.IO.Directory.SetCurrentDirectory(clientDir);
 
-      // validate the config file is found
-      if (System.IO.File.Exists("TurbineLauncher.exe.config"))
-      {
-        // load launcher configuration
-        LauncherData launcherData = new LauncherData();
-
-        if (!System.IO.File.Exists("Interop.PatchWrapper.dll"))
-        {
-          System.Windows.Forms.MessageBox.Show("Unable to locate Interop.PatchWrapper.dll.  Please verify executable is in your DDO or LOTRO installation folder.");
-          return;
-        }
-        
-        if (string.IsNullOrEmpty(worldName))
-          worldName = Settings.DefaultWorld;
-
-        if (string.IsNullOrEmpty(subscriptionName))
-          subscriptionName = Settings.DefaultSubscription;
-
-        if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
-        {
-          LoginResults lr = new LoginResults(username, password, launcherData);
-
-          if (!string.IsNullOrEmpty(worldName) && lr.Subscriptions.Count > 0)
-          {
-            if (lr.Subscriptions.Count == 1)
+            // validate the config file is found
+            if (System.IO.File.Exists("TurbineLauncher.exe.config"))
             {
-              lr.Launch(lr.Subscriptions[0].Name, worldName, language);
-              return;
-            }
-            else if (!string.IsNullOrEmpty(subscriptionName))
-            {
-              lr.Launch(subscriptionName, worldName, language);
-              return;
-            }
-          }
-        }
-      }
+                // load launcher configuration
+                LauncherData launcherData = new LauncherData();
 
-      // if we made it this far, we didn't launch yet
-      Application.EnableVisualStyles();
-      Application.SetCompatibleTextRenderingDefault(false);
-      Application.Run(new LaunchForm());
+                if (string.IsNullOrEmpty(worldName))
+                    worldName = Settings.DefaultWorld;
+
+                if (string.IsNullOrEmpty(subscriptionName))
+                    subscriptionName = Settings.DefaultSubscription;
+
+                if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
+                {
+                    LoginResults lr = new LoginResults(username, password, launcherData);
+
+                    if (!string.IsNullOrEmpty(worldName) && lr.Subscriptions.Count > 0)
+                    {
+                        if (lr.Subscriptions.Count == 1)
+                        {
+                            lr.Launch(lr.Subscriptions[0].Name, worldName, language);
+                            return;
+                        }
+                        else if (!string.IsNullOrEmpty(subscriptionName))
+                        {
+                            lr.Launch(subscriptionName, worldName, language);
+                            return;
+                        }
+                    }
+                }
+            }
+
+            // if we made it this far, we didn't launch yet
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new LaunchForm());
+        }
     }
-  }
 }

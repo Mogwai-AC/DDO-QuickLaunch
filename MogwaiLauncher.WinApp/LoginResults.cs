@@ -117,6 +117,7 @@ namespace MogwaiLauncher.WinApp
             string serviceUrl = launcherData.GetDataCenterSetting("GameClient.Arg.supportserviceurl");
 
             string clientParams = template.Replace("{SUBSCRIPTION}", subscriptionName);
+            clientParams = clientParams.Replace("{LOGIN}", loginServers.Substring(0, loginServers.IndexOf(';')));
             clientParams = clientParams.Replace("{GLS}", loginTicket);
             clientParams = clientParams.Replace("{CHAT}", world.ChatServerUrl);
             clientParams = clientParams.Replace("{LANG}", language);

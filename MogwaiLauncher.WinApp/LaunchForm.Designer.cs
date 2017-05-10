@@ -51,7 +51,7 @@
             this.manageClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.getHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnCreateShortcut = new System.Windows.Forms.Button();
+            this.createShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlLogin.SuspendLayout();
             this.pnlPlay.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -139,7 +139,6 @@
             // 
             // pnlPlay
             // 
-            this.pnlPlay.Controls.Add(this.btnCreateShortcut);
             this.pnlPlay.Controls.Add(this.label1);
             this.pnlPlay.Controls.Add(this.label2);
             this.pnlPlay.Controls.Add(this.btnCancel);
@@ -171,7 +170,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(16, 86);
+            this.btnCancel.Location = new System.Drawing.Point(97, 86);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 4;
@@ -181,7 +180,7 @@
             // 
             // bntPlay
             // 
-            this.bntPlay.Location = new System.Drawing.Point(97, 86);
+            this.bntPlay.Location = new System.Drawing.Point(199, 86);
             this.bntPlay.Name = "bntPlay";
             this.bntPlay.Size = new System.Drawing.Size(75, 23);
             this.bntPlay.TabIndex = 3;
@@ -226,6 +225,7 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createShortcutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -234,7 +234,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // clientsToolStripMenuItem
@@ -267,15 +267,12 @@
             this.getHelpToolStripMenuItem.Text = "Find Mogwai on Discord";
             this.getHelpToolStripMenuItem.Click += new System.EventHandler(this.getHelpToolStripMenuItem_Click);
             // 
-            // btnCreateShortcut
+            // createShortcutToolStripMenuItem
             // 
-            this.btnCreateShortcut.Location = new System.Drawing.Point(178, 86);
-            this.btnCreateShortcut.Name = "btnCreateShortcut";
-            this.btnCreateShortcut.Size = new System.Drawing.Size(122, 23);
-            this.btnCreateShortcut.TabIndex = 29;
-            this.btnCreateShortcut.Text = "Create Shortcut";
-            this.btnCreateShortcut.UseVisualStyleBackColor = true;
-            this.btnCreateShortcut.Click += new System.EventHandler(this.btnCreateShortcut_Click);
+            this.createShortcutToolStripMenuItem.Name = "createShortcutToolStripMenuItem";
+            this.createShortcutToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.createShortcutToolStripMenuItem.Text = "Create Shortcut";
+            this.createShortcutToolStripMenuItem.Click += new System.EventHandler(this.createShortcutToolStripMenuItem_Click);
             // 
             // LaunchForm
             // 
@@ -288,7 +285,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "LaunchForm";
-            this.Text = "Quick Launcher";
+            this.Text = "DDO QuickLaunch";
             this.Load += new System.EventHandler(this.LaunchForm_Load);
             this.pnlLogin.ResumeLayout(false);
             this.pnlLogin.PerformLayout();
@@ -325,6 +322,6 @@
     private System.Windows.Forms.ToolStripMenuItem manageClientsToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem getHelpToolStripMenuItem;
-        private System.Windows.Forms.Button btnCreateShortcut;
+        private System.Windows.Forms.ToolStripMenuItem createShortcutToolStripMenuItem;
     }
 }

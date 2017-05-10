@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MogwaiLauncher.WinApp", "MogwaiLauncher.WinApp\MogwaiLauncher.WinApp.csproj", "{5AADE677-474C-426C-ACE5-E0737F774BD6}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DDO-QuickLaunch Installer", "DDO-QuickLaunch Installer\DDO-QuickLaunch Installer.vdproj", "{5EC5F7EC-3650-4A86-B8F4-2C391FC1A351}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,11 @@ Global
 		{5AADE677-474C-426C-ACE5-E0737F774BD6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5AADE677-474C-426C-ACE5-E0737F774BD6}.Release|x86.ActiveCfg = Release|x86
 		{5AADE677-474C-426C-ACE5-E0737F774BD6}.Release|x86.Build.0 = Release|x86
+		{5EC5F7EC-3650-4A86-B8F4-2C391FC1A351}.Debug|Any CPU.ActiveCfg = Debug
+		{5EC5F7EC-3650-4A86-B8F4-2C391FC1A351}.Debug|x86.ActiveCfg = Debug
+		{5EC5F7EC-3650-4A86-B8F4-2C391FC1A351}.Release|Any CPU.ActiveCfg = Release
+		{5EC5F7EC-3650-4A86-B8F4-2C391FC1A351}.Release|Any CPU.Build.0 = Release
+		{5EC5F7EC-3650-4A86-B8F4-2C391FC1A351}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
