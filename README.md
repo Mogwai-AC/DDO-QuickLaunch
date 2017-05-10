@@ -2,7 +2,7 @@
 The faster, easier way to log in to Dungeons and Dragons Online (DDO)
 
 # How it works
-DDO-QuickLaunch skips a bunch of steps that the norml launcher does:
+DDO-QuickLaunch skips a bunch of steps that the normal launcher does:
 * Downloading News
 * Downloading Splash Screens
 * Patch Checking
