@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
+using System.Net;
 
 namespace MogwaiLauncher.WinApp
 {
@@ -23,6 +24,8 @@ namespace MogwaiLauncher.WinApp
             string username = Settings.Username;
             string password = Settings.Password;
             string clientDir = null;
+
+            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
 
             if (args.Length > 0)
             {

@@ -20,7 +20,6 @@ namespace MogwaiLauncher.WinApp
         public LoginResults(string username, string password, LauncherData launcherData)
         {
             this.launcherData = launcherData;
-
             GlobalLoginSystemAuthenticationService authSvc = new GlobalLoginSystemAuthenticationService();
             authSvc.Url = launcherData.DataCenter.AuthServer;
             UserProfile profile = authSvc.LoginAccount(username, password, null);
