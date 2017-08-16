@@ -114,10 +114,10 @@ namespace MogwaiLauncher.WinApp
         public void CreateShortcut(string sourceFile, string iconFile, string shortcutFile, string description, string arguments, string workingDirectory)
         {
             // Create WshShellClass instance:
-            WshShellClass wshShell = new WshShellClass();
+            WshShell wshShell = new WshShell();
 
             // Create shortcut object:
-            IWshRuntimeLibrary.IWshShortcut shorcut = (IWshRuntimeLibrary.IWshShortcut)wshShell.CreateShortcut(shortcutFile);
+            IWshShortcut shorcut = (IWshShortcut)wshShell.CreateShortcut(shortcutFile);
 
             // Assign shortcut properties:
             shorcut.TargetPath = sourceFile;
