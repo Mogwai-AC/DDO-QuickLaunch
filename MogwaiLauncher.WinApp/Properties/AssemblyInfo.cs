@@ -5,14 +5,15 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Turbine Quick-Launcher")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("DDO QuickLaunch")]
+[assembly: AssemblyDescription("One click launcher for DDO.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Turbine Quick-Launcher")]
+[assembly: AssemblyCompany("Mogwai")]
+[assembly: AssemblyProduct("DDO QuickLaunch")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
