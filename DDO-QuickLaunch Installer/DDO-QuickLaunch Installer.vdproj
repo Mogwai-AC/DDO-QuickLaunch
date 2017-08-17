@@ -221,7 +221,7 @@
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.3"
+        "ProductVersion" = "8:1.0.4"
         "Manufacturer" = "8:Mogwai the Furry"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
