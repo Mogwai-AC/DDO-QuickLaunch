@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using IWshRuntimeLibrary;
+using System.Net;
+using Microsoft.SqlServer.MessageBox;
 
 namespace MogwaiLauncher.WinApp
 {
@@ -134,7 +136,18 @@ namespace MogwaiLauncher.WinApp
 
         private void cbClients_SelectedIndexChanged(object sender, EventArgs e)
         {
-            launcherData = new LauncherData(cbClients.Text);
+            try
+            {
+                launcherData = new LauncherData(cbClients.Text);
+            }
+            catch (WebException webEx)
+            {
+                // downtime
+                ExceptionMessageBox foo = new ExceptionMessageBox(webEx);
+                foo.Show(this);
+                this.Close();
+            }
+
             txtUsername.Enabled = true;
             txtPassword.Enabled = true;
             btnLogin.Enabled = true;

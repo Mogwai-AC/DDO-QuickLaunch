@@ -6,6 +6,7 @@ using System.Text;
 using System.Xml;
 using MogwaiLauncher.WinApp.Turbine.GLS;
 using MogwaiLauncher.WinApp.Turbine.GLS.Auth;
+using System.Net;
 
 namespace MogwaiLauncher.WinApp
 {
@@ -32,7 +33,7 @@ namespace MogwaiLauncher.WinApp
             dataCenterConfig.Load(System.IO.Path.Combine(workingDir, "TurbineLauncher.exe.config"));
             gameName = GetAppSetting(dataCenterConfig, "DataCenter.GameName");
             dataCenterServer = GetAppSetting(dataCenterConfig, "Launcher.DataCenterService.GLS");
-
+            
             GLSDatacenterInfoServer svc = new GLSDatacenterInfoServer();
             svc.Url = dataCenterServer;
             Datacenter[] dc = svc.GetDatacenters(gameName);

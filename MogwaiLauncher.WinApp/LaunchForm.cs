@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.SqlServer.MessageBox;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
@@ -205,7 +207,18 @@ namespace MogwaiLauncher.WinApp
 
         private void LoadLauncherData()
         {
-            launcherData = new LauncherData();
+            try
+            {
+                launcherData = new LauncherData();
+            }
+            catch (WebException webEx)
+            {
+                // downtime
+                ExceptionMessageBox foo = new ExceptionMessageBox(webEx);
+                foo.Caption = "Unable to get necessary data from DDO Servers.  DDO Quicklaunch will close.";
+                foo.Show(this);
+                Application.Exit();
+            }
         }
 
         private void getHelpToolStripMenuItem_Click(object sender, EventArgs e)
