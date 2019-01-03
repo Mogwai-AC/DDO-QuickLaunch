@@ -24,6 +24,7 @@ namespace MogwaiLauncher.WinApp
             string username = Settings.Username;
             string password = Settings.Password;
             string clientDir = null;
+            string character = null;
 
             ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
 
@@ -53,6 +54,9 @@ namespace MogwaiLauncher.WinApp
                             case 'd':
                                 clientDir = arg.Substring(3).Replace("\"", "");
                                 break;
+                            case 'c':
+                                character = arg.Substring(3);
+                                break;
                         }
                     }
                 }
@@ -81,12 +85,12 @@ namespace MogwaiLauncher.WinApp
                     {
                         if (lr.Subscriptions.Count == 1)
                         {
-                            lr.Launch(lr.Subscriptions[0].Name, worldName, language);
+                            lr.Launch(lr.Subscriptions[0].Name, worldName, language, character);
                             return;
                         }
                         else if (!string.IsNullOrEmpty(subscriptionName))
                         {
-                            lr.Launch(subscriptionName, worldName, language);
+                            lr.Launch(subscriptionName, worldName, language, character);
                             return;
                         }
                     }

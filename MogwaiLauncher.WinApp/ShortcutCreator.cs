@@ -104,7 +104,7 @@ namespace MogwaiLauncher.WinApp
                 string arguments = "/u:{0} /p:{1} /s:{2} /w:{3} /l:{4} /d:\"{5}\"";
 
                 if (includeCharacter)
-                    arguments += " /u:{6}";
+                    arguments += " /c:{6}";
 
                 arguments = string.Format(arguments, Util.EncryptString(txtUsername.Text),
                                                      Util.EncryptString(txtPassword.Text),

@@ -50,9 +50,19 @@ namespace MogwaiLauncher.WinApp
             Launch(subscriptionName, launcherData.Worlds[world], language);
         }
 
+        public void Launch(string subscriptionName, string world, string language, string character)
+        {
+            Launch(subscriptionName, launcherData.Worlds[world], language, character);
+        }
+
         public void Launch(string subscriptionName, World world, string language)
         {
             Launch(subscriptionName, world, Util.GetWorldStatus(world), language);
+        }
+
+        public void Launch(string subscriptionName, World world, string language, string character)
+        {
+            Launch(subscriptionName, world, Util.GetWorldStatus(world), language, character);
         }
 
         public void Launch(string subscriptionName, World world)
@@ -67,7 +77,7 @@ namespace MogwaiLauncher.WinApp
             Launch(subscriptionName, world, worldStatus, language);
         }
 
-        public void Launch(string subscriptionName, World world, XmlDocument worldStatus, string language)
+        public void Launch(string subscriptionName, World world, XmlDocument worldStatus, string language, string character = null)
         {
             // get a login ticket
             string loginTicketUrl = launcherData.GetDataCenterSetting("WorldQueue.LoginQueue.URL");
@@ -125,6 +135,9 @@ namespace MogwaiLauncher.WinApp
             clientParams = clientParams.Replace("{SUPPORTURL}", supportUrl);
             clientParams = clientParams.Replace("{SUPPORTSERVICEURL}", serviceUrl);
             clientParams = clientParams.Replace("{BUGURL}", bugUrl);
+
+            if (!string.IsNullOrWhiteSpace(character))
+                clientParams += " -u " + character;
             
             string clientFilename = launcherData.GetDataCenterSetting("GameClient.WIN32.Filename");
 
