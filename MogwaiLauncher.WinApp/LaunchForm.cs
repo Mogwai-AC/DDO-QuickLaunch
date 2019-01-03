@@ -1,4 +1,4 @@
-﻿using Microsoft.SqlServer.MessageBox;
+﻿// using Microsoft.SqlServer.MessageBox;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -214,9 +214,9 @@ namespace MogwaiLauncher.WinApp
             catch (WebException webEx)
             {
                 // downtime
-                ExceptionMessageBox foo = new ExceptionMessageBox(webEx);
-                foo.Caption = "Unable to get necessary data from DDO Servers.  DDO Quicklaunch will close.";
-                foo.Show(this);
+                //ExceptionMessageBox foo = new ExceptionMessageBox(webEx);
+                //foo.Caption = "Unable to get necessary data from DDO Servers.  DDO Quicklaunch will close.";
+                //foo.Show(this);
                 Application.Exit();
             }
         }

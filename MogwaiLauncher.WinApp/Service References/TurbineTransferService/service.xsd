@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://www.wbie.com/Platform/Turbine/DataContracts" />
+  <xs:element name="Migrate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://www.wbie.com/Platform/Turbine/DataContracts" minOccurs="0" name="request" nillable="true" type="q1:MigrateRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MigrateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://www.wbie.com/Platform/Turbine/DataContracts" minOccurs="0" name="MigrateResult" nillable="true" type="q2:MigrateResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransferConfiguration">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransferConfigurationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://www.wbie.com/Platform/Turbine/DataContracts" minOccurs="0" name="GetTransferConfigurationResult" nillable="true" type="q3:GetTransferConfigurationResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTokenBalance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://www.wbie.com/Platform/Turbine/DataContracts" minOccurs="0" name="request" nillable="true" type="q4:TokenBalanceRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTokenBalanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://www.wbie.com/Platform/Turbine/DataContracts" minOccurs="0" name="GetTokenBalanceResult" nillable="true" type="q5:GetTokenBalanceResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPointBalance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://www.wbie.com/Platform/Turbine/DataContracts" minOccurs="0" name="request" nillable="true" type="q6:PointBalanceRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPointBalanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://www.wbie.com/Platform/Turbine/DataContracts" minOccurs="0" name="GetPointBalanceResult" nillable="true" type="q7:GetPointBalanceResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllCharacters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://www.wbie.com/Platform/Turbine/DataContracts" minOccurs="0" name="request" nillable="true" type="q8:GetAllCharactersRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllCharactersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://www.wbie.com/Platform/Turbine/DataContracts" minOccurs="0" name="GetAllCharactersResult" nillable="true" type="q9:GetAllCharactersResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreditTransferTokenBalance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="subscriptionKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tokens" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreditTransferTokenBalanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreditTransferTokenBalanceResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

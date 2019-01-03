@@ -12,6 +12,8 @@ namespace MogwaiLauncher.WinApp
 {
     public class LauncherData
     {
+        private const string TransferServiceKey = "ShardTransfer.ServiceURL";
+
         private string gameName;
         public string GameName
         { get { return gameName; } }
@@ -47,6 +49,17 @@ namespace MogwaiLauncher.WinApp
                     dataCenterSettings.Add(node.Attributes["key"].Value, node.Attributes["value"].Value);
 
             worlds = dataCenter.Worlds.ToDictionary(w => w.Name, w => w);
+        }
+
+        public string TransferServiceUrl
+        {
+            get
+            {
+                if (!dataCenterSettings.ContainsKey(TransferServiceKey))
+                    return null;
+
+                return dataCenterSettings[TransferServiceKey];
+            }
         }
 
         private Datacenter dataCenter = null;

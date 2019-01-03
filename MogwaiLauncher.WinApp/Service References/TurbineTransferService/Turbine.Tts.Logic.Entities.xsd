@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Turbine.Tts.Logic.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Turbine.Tts.Logic.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="TransferItems">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Account" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Characters" nillable="true" type="q1:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransferItems" nillable="true" type="tns:TransferItems" />
+  <xs:complexType name="ArrayOfCharactersOnShard">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CharactersOnShard" nillable="true" type="tns:CharactersOnShard" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCharactersOnShard" nillable="true" type="tns:ArrayOfCharactersOnShard" />
+  <xs:complexType name="CharactersOnShard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Characters" nillable="true" type="tns:ArrayOfCharacter" />
+      <xs:element minOccurs="0" name="HasAccountData" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Shard" nillable="true" type="tns:Shard" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CharactersOnShard" nillable="true" type="tns:CharactersOnShard" />
+  <xs:complexType name="ArrayOfCharacter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Character" nillable="true" type="tns:Character" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCharacter" nillable="true" type="tns:ArrayOfCharacter" />
+  <xs:complexType name="Character">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Deleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="GuildLeader" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Iid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Locked" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SavedTimestamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Subscription" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Character" nillable="true" type="tns:Character" />
+  <xs:complexType name="Shard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IPAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Shard" nillable="true" type="tns:Shard" />
+</xs:schema>

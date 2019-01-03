@@ -9,13 +9,21 @@ using System.Text;
 using System.Windows.Forms;
 using IWshRuntimeLibrary;
 using System.Net;
-using Microsoft.SqlServer.MessageBox;
+using System.ServiceModel;
+using MogwaiLauncher.WinApp.Turbine.GLS.Auth;
+using MogwaiLauncher.WinApp.TurbineTransferService;
+
+// using Microsoft.SqlServer.MessageBox;
 
 namespace MogwaiLauncher.WinApp
 {
     public partial class ShortcutCreator : Form
     {
         private LauncherData launcherData;
+
+        private Dictionary<string, List<Character>> characterData = new Dictionary<string, List<Character>>();
+        private bool suppressFetching = true;
+        private bool suppressFiltering = true;
 
         public ShortcutCreator()
         {
@@ -50,6 +58,7 @@ namespace MogwaiLauncher.WinApp
         {
             try
             {
+                suppressFetching = true;
                 LoginResults results = new LoginResults(txtUsername.Text, txtPassword.Text, launcherData);
                 cbWorlds.DataSource = launcherData.Worlds.Values.ToList();
                 cbWorlds.DisplayMember = "Name";
@@ -65,6 +74,9 @@ namespace MogwaiLauncher.WinApp
 
                 if (!string.IsNullOrEmpty(Settings.DefaultSubscription))
                     cbSubs.FindStringExact(Settings.DefaultSubscription);
+
+                suppressFetching = false;
+                PopulateCharacters();
             }
             catch (Exception ex)
             {
@@ -75,10 +87,12 @@ namespace MogwaiLauncher.WinApp
 
         private void btnCreateShortcut_Click(object sender, EventArgs e)
         {
+            bool includeCharacter = !string.IsNullOrWhiteSpace(cbCharacters.Text);
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.AddExtension = true;
             sfd.DefaultExt = ".lnk";
-            sfd.FileName = cbSubs.Text + " - " + cbWorlds.Text;
+            sfd.FileName = cbSubs.Text + " - " + cbWorlds.Text + (includeCharacter? " - " + cbCharacters.Text : "");
+
             sfd.Filter = "Shortcut files|*.lnk";
             DialogResult dr = sfd.ShowDialog();
             if (dr == DialogResult.OK)
@@ -88,12 +102,17 @@ namespace MogwaiLauncher.WinApp
 
                 // build shortcut
                 string arguments = "/u:{0} /p:{1} /s:{2} /w:{3} /l:{4} /d:\"{5}\"";
+
+                if (includeCharacter)
+                    arguments += " /u:{6}";
+
                 arguments = string.Format(arguments, Util.EncryptString(txtUsername.Text),
                                                      Util.EncryptString(txtPassword.Text),
                                                      cbSubs.SelectedValue,
                                                      cbWorlds.Text,
                                                      cbLanguage.Text,
-                                                     gameFolder);
+                                                     gameFolder,
+                                                     cbCharacters.Text);
 
                 // write out the batch file
                 string batchFileName = launcherFolder + "\\" + sfd.FileName.Substring(sfd.FileName.LastIndexOf("\\") + 1).Replace(".lnk", ".bat");
@@ -143,14 +162,87 @@ namespace MogwaiLauncher.WinApp
             catch (WebException webEx)
             {
                 // downtime
-                ExceptionMessageBox foo = new ExceptionMessageBox(webEx);
-                foo.Show(this);
+                // ExceptionMessageBox foo = new ExceptionMessageBox(webEx);
+                // foo.Show(this);
                 this.Close();
             }
 
             txtUsername.Enabled = true;
             txtPassword.Enabled = true;
             btnLogin.Enabled = true;
+        }
+
+        private void cbWorlds_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterCharacters();
+        }
+
+        private void PopulateCharacters()
+        {
+            if (suppressFetching)
+                return;
+
+            try
+            {
+                cbCharacters.Items.Clear();
+                characterData = new Dictionary<string, List<Character>>();
+
+                if (string.IsNullOrWhiteSpace(launcherData.TransferServiceUrl))
+                    return;
+                
+                if (string.IsNullOrWhiteSpace(cbSubs.SelectedText) && cbSubs.SelectedItem == null)
+                    return;
+
+                GetAllCharactersRequest request = new GetAllCharactersRequest();
+                request.Subscription = (cbSubs.SelectedItem as GameSubscription).Name;
+                
+                // try to pull a list of characters
+                TurbineTransferServiceClient client = new TurbineTransferServiceClient(new BasicHttpBinding(), new EndpointAddress(launcherData.TransferServiceUrl));
+                var response = client.GetAllCharacters(request);
+
+                if (response == null || response.HasError)
+                    return;
+
+                suppressFiltering = true;
+
+                foreach (var shard in response.Shards)
+                    if (shard != null && !string.IsNullOrWhiteSpace(shard.Shard?.Name) && shard.Characters != null && shard.Characters.Length > 0)
+                        characterData.Add(shard.Shard.Name, shard.Characters.ToList());
+
+                suppressFiltering = false;
+                cbCharacters.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void FilterCharacters()
+        {
+            if (suppressFiltering)
+                return;
+
+            cbCharacters.Items.Clear();
+
+            if (string.IsNullOrWhiteSpace(cbWorlds.Text))
+                return;
+
+            if (!characterData.ContainsKey(cbWorlds.Text))
+                return;
+
+            var characters = characterData[cbWorlds.Text].Where(c => c.Deleted == false);
+
+            cbCharacters.Items.Add("");
+
+            foreach (var character in characters)
+                cbCharacters.Items.Add(character.Name);
+        }
+
+        private void cbSubs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PopulateCharacters();
+            FilterCharacters();
         }
     }
 }

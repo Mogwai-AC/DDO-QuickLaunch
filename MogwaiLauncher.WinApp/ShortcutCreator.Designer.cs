@@ -43,6 +43,8 @@
             this.btnCreateShortcut = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.cbClients = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbCharacters = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txtPassword
@@ -53,8 +55,8 @@
             this.txtPassword.Location = new System.Drawing.Point(91, 70);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(239, 20);
-            this.txtPassword.TabIndex = 32;
+            this.txtPassword.Size = new System.Drawing.Size(240, 20);
+            this.txtPassword.TabIndex = 2;
             this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
             // 
@@ -65,8 +67,8 @@
             this.txtUsername.Enabled = false;
             this.txtUsername.Location = new System.Drawing.Point(91, 43);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(239, 20);
-            this.txtUsername.TabIndex = 31;
+            this.txtUsername.Size = new System.Drawing.Size(240, 20);
+            this.txtUsername.TabIndex = 1;
             this.txtUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsername_KeyPress);
             // 
             // label3
@@ -93,7 +95,7 @@
             this.btnLogin.Location = new System.Drawing.Point(133, 96);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(151, 23);
-            this.btnLogin.TabIndex = 33;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Get Subscriptions";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -116,8 +118,9 @@
             this.cbSubs.FormattingEnabled = true;
             this.cbSubs.Location = new System.Drawing.Point(91, 125);
             this.cbSubs.Name = "cbSubs";
-            this.cbSubs.Size = new System.Drawing.Size(239, 21);
-            this.cbSubs.TabIndex = 35;
+            this.cbSubs.Size = new System.Drawing.Size(240, 21);
+            this.cbSubs.TabIndex = 4;
+            this.cbSubs.SelectedIndexChanged += new System.EventHandler(this.cbSubs_SelectedIndexChanged);
             // 
             // cbWorlds
             // 
@@ -128,8 +131,9 @@
             this.cbWorlds.FormattingEnabled = true;
             this.cbWorlds.Location = new System.Drawing.Point(91, 152);
             this.cbWorlds.Name = "cbWorlds";
-            this.cbWorlds.Size = new System.Drawing.Size(239, 21);
-            this.cbWorlds.TabIndex = 36;
+            this.cbWorlds.Size = new System.Drawing.Size(240, 21);
+            this.cbWorlds.TabIndex = 5;
+            this.cbWorlds.SelectedIndexChanged += new System.EventHandler(this.cbWorlds_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -150,15 +154,15 @@
             "English",
             "French",
             "German"});
-            this.cbLanguage.Location = new System.Drawing.Point(91, 179);
+            this.cbLanguage.Location = new System.Drawing.Point(91, 206);
             this.cbLanguage.Name = "cbLanguage";
-            this.cbLanguage.Size = new System.Drawing.Size(239, 21);
-            this.cbLanguage.TabIndex = 38;
+            this.cbLanguage.Size = new System.Drawing.Size(240, 21);
+            this.cbLanguage.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 182);
+            this.label5.Location = new System.Drawing.Point(11, 209);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 39;
@@ -169,10 +173,10 @@
             this.btnCreateShortcut.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreateShortcut.Enabled = false;
-            this.btnCreateShortcut.Location = new System.Drawing.Point(12, 205);
+            this.btnCreateShortcut.Location = new System.Drawing.Point(14, 233);
             this.btnCreateShortcut.Name = "btnCreateShortcut";
-            this.btnCreateShortcut.Size = new System.Drawing.Size(318, 23);
-            this.btnCreateShortcut.TabIndex = 40;
+            this.btnCreateShortcut.Size = new System.Drawing.Size(319, 23);
+            this.btnCreateShortcut.TabIndex = 8;
             this.btnCreateShortcut.Text = "Create Shortcut";
             this.btnCreateShortcut.UseVisualStyleBackColor = true;
             this.btnCreateShortcut.Click += new System.EventHandler(this.btnCreateShortcut_Click);
@@ -194,15 +198,38 @@
             this.cbClients.FormattingEnabled = true;
             this.cbClients.Location = new System.Drawing.Point(91, 12);
             this.cbClients.Name = "cbClients";
-            this.cbClients.Size = new System.Drawing.Size(239, 21);
-            this.cbClients.TabIndex = 43;
+            this.cbClients.Size = new System.Drawing.Size(240, 21);
+            this.cbClients.TabIndex = 0;
             this.cbClients.SelectedIndexChanged += new System.EventHandler(this.cbClients_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 182);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 13);
+            this.label7.TabIndex = 45;
+            this.label7.Text = "Characters";
+            // 
+            // cbCharacters
+            // 
+            this.cbCharacters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbCharacters.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCharacters.Enabled = false;
+            this.cbCharacters.FormattingEnabled = true;
+            this.cbCharacters.Location = new System.Drawing.Point(91, 179);
+            this.cbCharacters.Name = "cbCharacters";
+            this.cbCharacters.Size = new System.Drawing.Size(240, 21);
+            this.cbCharacters.TabIndex = 6;
             // 
             // ShortcutCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 240);
+            this.ClientSize = new System.Drawing.Size(345, 266);
+            this.Controls.Add(this.cbCharacters);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cbClients);
             this.Controls.Add(this.btnCreateShortcut);
@@ -243,5 +270,7 @@
     private System.Windows.Forms.Button btnCreateShortcut;
     private System.Windows.Forms.Label label6;
     private System.Windows.Forms.ComboBox cbClients;
-  }
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cbCharacters;
+    }
 }

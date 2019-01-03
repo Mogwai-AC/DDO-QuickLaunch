@@ -92,7 +92,9 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -150,11 +152,54 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Service References\TurbineTransferService\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TurbineTransferService\Bindings.wsdl" />
+    <None Include="Service References\TurbineTransferService\DataContracts.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TurbineTransferService\DataContracts1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TurbineTransferService\MogwaiLauncher.WinApp.TurbineTransferService.GetAllCharactersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TurbineTransferService\MogwaiLauncher.WinApp.TurbineTransferService.GetPointBalanceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TurbineTransferService\MogwaiLauncher.WinApp.TurbineTransferService.GetTokenBalanceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TurbineTransferService\MogwaiLauncher.WinApp.TurbineTransferService.GetTransferConfigurationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TurbineTransferService\MogwaiLauncher.WinApp.TurbineTransferService.MigrateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TurbineTransferService\SE.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TurbineTransferService\service.wsdl" />
+    <None Include="Service References\TurbineTransferService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TurbineTransferService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TurbineTransferService\Turbine.Tts.Logic.Entities.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web References\Turbine.GLS\Service.wsdl" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Service References\TurbineTransferService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="ShortcutCreator.cs">
@@ -343,6 +388,12 @@
   <ItemGroup>
     <Content Include="icon.ico" />
     <Content Include="sample launcher config.xml" />
+    <None Include="Service References\TurbineTransferService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\TurbineTransferService\configuration.svcinfo" />
+    <None Include="Service References\TurbineTransferService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="IWshRuntimeLibrary">
@@ -354,6 +405,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\TurbineTransferService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
